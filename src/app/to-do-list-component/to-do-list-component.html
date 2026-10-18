@@ -1,0 +1,15 @@
+<input type="text" placeholder="Text of task..." #textInput>
+<button (click)="addingTask(textInput)">Add Task</button>
+
+@for (task of service.tasksList(); track $index) {
+    <div class="task">
+        <input type="checkbox" [checked]="task.isCompleted" (input)="task.isCompleted = !task.isCompleted">
+        {{task.text}}
+        <div #editing [hidden]="true">
+            <input type="text" [placeholder]="task.text" #newText  />
+            <button (click)="editingTask(task.id,newText,editing)">Submit</button>
+        </div>
+        <button (click)="editing.hidden=false">Edit</button>
+        <button (click)="service.delTask(task.id)">Delete</button>
+    </div>
+}

@@ -1,0 +1,8 @@
+<ul>
+    @for (user of service.userList(); track $index) {
+        <li>{{user.name}}
+            <button (click)="service.changeIsShown(user.id)">More info</button>
+            <div [hidden]="!user.isShown">{{user.email}}</div>
+        </li>   
+    }
+</ul>

@@ -1,1 +1,20 @@
-<p>films-component works!</p>
+Title: <input type="text" #search>
+Year: <input type="text" #year>
+Plot: <select name="" id="plot" #plot>
+    <option value="short" [defaultSelected]="true">Short</option>
+    <option value="full">Full</option>
+</select>
+<button type="submit" (click)="getFilmByTitle(search.value, plot.value, year.value)">Search</button>
+
+<div class="film">
+    <h4>{{film().Title}}</h4>
+    <img [src]="film().Poster" alt="poster of the film" />
+    <p>
+        Year: {{film().Year}}<br>
+        Rating imdb: {{film().imdbRating}}<br>
+        Runtime: {{film().Runtime}}<br>
+        Director: {{film().Director}}<br>
+        Actors: {{film().Actors}}<br>
+        Plot: {{film().Plot}}<br>
+    </p>
+</div>
